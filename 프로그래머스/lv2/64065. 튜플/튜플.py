@@ -1,9 +1,11 @@
 def solution(s):
-    set_list = sorted([[int(e) for e in _set_str.replace('{', '').replace('}', '').split(',')] for _set_str in s[1:-1].split('},')], key=len)
+    set_list = sorted([set_str.split(',') for set_str in s[2:-2].split('},{')], key=len)
 
     answer = []
-    for _set in set_list:
-        _set = [e for e in _set if e not in answer]
-        answer.append(_set.pop())
+    for set_i in set_list:
+        for es in set_i:
+            e = int(es)
+            if e not in answer:
+                answer.append(e)
 
     return answer
