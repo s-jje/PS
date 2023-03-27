@@ -16,9 +16,9 @@ def solution(operations):
             heapq.heappush(min_heap, val)
             heapq.heappush(max_heap, -val)
         elif op == 'D':
-            if val == -1 and min_heap:
+            if min_heap and val == -1:
                 min_heap_removed.append(heapq.heappop(min_heap))
-            elif val == 1 and max_heap:
+            elif max_heap and val == 1:
                 max_heap_removed.append(-heapq.heappop(max_heap))
 
             if not min_heap or not max_heap:
